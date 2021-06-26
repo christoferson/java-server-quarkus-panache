@@ -20,7 +20,7 @@ import org.demo.service.IAccountService;
 public class AccountResource {
 	
 	@Inject
-	private IAccountService accountService;
+	IAccountService accountService;
 	
     @GET
     @Produces(MediaType.APPLICATION_JSON)

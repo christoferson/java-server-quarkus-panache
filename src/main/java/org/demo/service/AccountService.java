@@ -10,12 +10,16 @@ import javax.transaction.Transactional;
 
 import org.demo.ApplicationException;
 import org.demo.model.Account;
+import org.demo.repository.AccountRepository;
 
 @ApplicationScoped
 public class AccountService implements IAccountService {
 
 	@Inject
-	private EntityManager entityManager;
+	EntityManager entityManager;
+	
+	@Inject
+	AccountRepository repository;
 	
 	@Override
 	public List<Account> list(int firstResult, int maxResults) {
@@ -28,7 +32,7 @@ public class AccountService implements IAccountService {
 	
 	@Override
 	public Account find(long id) {
-		return entityManager.find(Account.class, id);
+		return repository.findById(id);
 	}
 	
 	@Override
@@ -49,7 +53,7 @@ public class AccountService implements IAccountService {
 	@Transactional
 	public Account register(Account account) {
 		Objects.requireNonNull(account);
-    	entityManager.persist(account);
+		repository.persist(account);
         return account;
 	}
 	
