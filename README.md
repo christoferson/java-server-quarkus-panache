@@ -66,3 +66,5 @@ This example demonstrate RESTEasy JSON serialisation by letting you list, add an
 ### Health
 mvn quarkus:add-extension -Dextensions="quarkus-smallrye-health"
 
+Health UI: http://localhost:8080/q/health-ui/
+Config: quarkus.smallrye-health.ui.enable=true
