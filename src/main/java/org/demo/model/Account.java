@@ -11,10 +11,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
 @Entity 
 @NamedQuery(name = "Accounts.findAll", query = "SELECT a FROM Account a ORDER BY a.accountNumber")
 @NamedQuery(name = "Accounts.findByAccountNumber", query = "SELECT a FROM Account a WHERE a.accountNumber = :accountNumber ORDER BY a.accountNumber")
-public class Account {
+public class Account extends PanacheEntityBase {
 
 	@Id
 	@SequenceGenerator(name = "accountsSequence", sequenceName = "accounts_id_seq", allocationSize = 1, initialValue = 10)

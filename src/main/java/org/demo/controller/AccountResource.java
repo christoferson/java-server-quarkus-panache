@@ -27,8 +27,8 @@ public class AccountResource {
     public List<Account> list(
     		@QueryParam("page") @DefaultValue("1") int pageNumber,
     		@QueryParam("size") @DefaultValue("5") int pageSize) {
-    	int firstResult = (pageNumber - 1) * pageSize + 1;
-    	return accountService.list(firstResult, pageSize);
+    	
+    	return accountService.list(pageNumber, pageSize);
     }
     
     @GET
