@@ -68,3 +68,9 @@ mvn quarkus:add-extension -Dextensions="quarkus-smallrye-health"
 
 Health UI: http://localhost:8080/q/health-ui/
 Config: quarkus.smallrye-health.ui.enable=true
+
+### Links
+
+Get Account: curl -i -X GET http://localhost:8080/account/1
+
+Deposit Account: curl -i -X PUT http://localhost:8080/account/deposit/1?amount=256

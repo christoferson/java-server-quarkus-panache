@@ -1,5 +1,6 @@
 package org.demo.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.demo.model.Account;
@@ -11,6 +12,8 @@ public interface IAccountService {
 	Account find(long id);
 	
 	Account findByAccontNumber(long accountNumber);
+	
+	Account deposit(long id, BigDecimal amount);
 
 	Account register(Account account);
 
