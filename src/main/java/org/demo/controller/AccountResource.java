@@ -44,8 +44,16 @@ public class AccountResource {
     @Path("/deposit/{id}")
     @Consumes("application/json")
     @Produces("application/json")
-    public Account edit(@PathParam("id") long id, @QueryParam("amount") BigDecimal amount) {
+    public Account deposit(@PathParam("id") long id, @QueryParam("amount") BigDecimal amount) {
     	return accountService.deposit(id, amount);
+    }
+    
+    @PUT
+    @Path("/withdraw/{id}")
+    @Consumes("application/json")
+    @Produces("application/json")
+    public Account withdraw(@PathParam("id") long id, @QueryParam("amount") BigDecimal amount) {
+    	return accountService.withdraw(id, amount);
     }
 
     @GET

@@ -67,6 +67,27 @@ public class AccountService implements IAccountService {
 		
 		return account;
 	}
+	
+	@Override
+	@Transactional
+	public Account withdraw(long id, BigDecimal amount) {
+		LOG.debug(String.format("Deposit %s to Account %s", amount, id));
+		Objects.requireNonNull(amount);
+		if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+			throw new ApplicationException();
+		}
+		Account account = repository.findById(id);
+		if (account == null) {
+			throw new ApplicationException();
+		}
+		BigDecimal newAmount = account.getBalance().subtract(amount);
+		if (newAmount.compareTo(BigDecimal.ZERO) < 0) {
+			throw new ApplicationException();
+		}
+		account.setBalance(newAmount);
+		
+		return account;
+	}
 
 	@Override
 	@Transactional

@@ -14,6 +14,8 @@ public interface IAccountService {
 	Account findByAccontNumber(long accountNumber);
 	
 	Account deposit(long id, BigDecimal amount);
+	        
+	Account withdraw(long id, BigDecimal amount);
 
 	Account register(Account account);
 
